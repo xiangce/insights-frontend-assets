@@ -1123,7 +1123,8 @@
                 "tg3_start_xmit",
                 "timeout; kill it",
                 "udev: renamed network interface",
-                "udevd"
+                "udevd",
+                "unknown filesystem type 'binfmt_misc'"
             ],
             "symbolic_name": "messages"
         },
@@ -1788,5 +1789,5 @@
     "pre_commands": {
         "iface": "/sbin/ip -o link | awk -F ': ' '/.*link\\/ether/ {print $2}'"
     },
-    "version": "2018-05-18T13:48:18.433640"
+    "version": "2018-05-22T09:32:31.896286"
 }
