@@ -190,6 +190,11 @@
             "symbolic_name": "getenforce"
         },
         {
+            "command": "/usr/sbin/getsebool -a",
+            "pattern": [],
+            "symbolic_name": "getsebool"
+        },
+        {
             "command": "/bin/ls -l /boot/grub/grub.conf",
             "pattern": [],
             "symbolic_name": "grub1_config_perms"
@@ -198,6 +203,11 @@
             "command": "/bin/ls -l /boot/grub2/grub.cfg",
             "pattern": [],
             "symbolic_name": "grub_config_perms"
+        },
+        {
+            "command": "/usr/sbin/grubby --default-index",
+            "pattern": [],
+            "symbolic_name": "grubby_default_index"
         },
         {
             "command": "/usr/bin/crontab -l -u heat",
@@ -225,6 +235,11 @@
             "command": "/usr/sbin/httpd.worker -V",
             "pattern": [],
             "symbolic_name": "httpd_worker_V"
+        },
+        {
+            "command": "/usr/sbin/httpd -M",
+            "pattern": [],
+            "symbolic_name": "httpd_M"
         },
         {
             "command": "/bin/rpm -qa --qf='%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\t%{INSTALLTIME:date}\t%{BUILDTIME}\t%{VENDOR}\t%{BUILDHOST}\tDUMMY\t%{SIGPGP:pgpsig}\n'",
@@ -336,6 +351,11 @@
             "symbolic_name": "ls_sys_firmware"
         },
         {
+            "command": "/bin/ls -la /var/lib/mongodb",
+            "pattern": [],
+            "symbolic_name": "ls_var_lib_mongodb"
+        },
+        {
             "command": "/bin/ls -la /var/log /var/log/audit",
             "pattern": [],
             "symbolic_name": "ls_var_log"
@@ -344,6 +364,24 @@
             "command": "/bin/ls -la /dev/null /var/www",
             "pattern": [],
             "symbolic_name": "ls_var_www"
+        },
+        {
+            "command": "/bin/ls -lnL /var/run",
+            "pattern": [],
+            "symbolic_name": "ls_var_run"
+        },
+        {
+            "command": "/bin/ls -lan /",
+            "pattern": [],
+            "symbolic_name": "ls_osroot"
+        },
+        {
+            "command": "/bin/ls -ln /var/tmp",
+            "pattern": [
+                "/var/tmp",
+                "foreman-ssh-cmd"
+            ],
+            "symbolic_name": "ls_var_tmp"
         },
         {
             "command": "/bin/lsblk",
@@ -384,6 +422,11 @@
             "symbolic_name": "lssap"
         },
         {
+            "command": "/usr/bin/lsscsi",
+            "pattern": [],
+            "symbolic_name": "lsscsi"
+        },
+        {
             "command": "/sbin/lvs --nameprefixes --noheadings --separator='|' -a -o lv_name,lv_size,lv_attr,mirror_log,vg_name,devices,region_size,data_percent,metadata_percent --config=\"global{locking_type=0}\"",
             "pattern": [],
             "symbolic_name": "lvs_noheadings"
@@ -407,6 +450,11 @@
             "command": "/sbin/multipath -v4 -ll",
             "pattern": [],
             "symbolic_name": "multipath__v4__ll"
+        },
+        {
+            "command": "/bin/mysqladmin variables",
+            "pattern": [],
+            "symbolic_name": "mysqladmin_vars"
         },
         {
             "command": "/usr/sbin/named-checkconf -p",
@@ -489,6 +537,7 @@
                 "mysqld",
                 "ntpd",
                 "phc2sys",
+                "postgres",
                 "ptp4l",
                 "tomcat"
             ],
@@ -504,21 +553,34 @@
             "pattern": [
                 "/usr/bin/celery worker",
                 "/usr/sbin/fcoemon --syslog",
+                "/usr/sbin/qpidd",
                 "COMMAND",
                 "catalina.base",
                 "chronyd",
+                "greenplum",
                 "httpd",
                 "iscsid",
                 "java",
+                "jboss",
                 "nfs-server",
                 "nfsd",
                 "nginx",
                 "ntpd",
+                "postgres",
                 "smbd",
                 "target_completi",
                 "tgtd"
             ],
             "symbolic_name": "ps_auxww"
+        },
+        {
+            "command": "/bin/ps -ef",
+            "pattern": [
+                "CMD",
+                "nginx: master process",
+                "nginx: worker process"
+            ],
+            "symbolic_name": "ps_ef"
         },
         {
             "command": "/sbin/pvs --nameprefixes --noheadings --separator='|' -a -o pv_all,vg_name --config=\"global{locking_type=0}\"",
@@ -568,6 +630,16 @@
             "symbolic_name": "smbstatus_p"
         },
         {
+            "command": "/usr/bin/scl --list",
+            "pattern": [],
+            "symbolic_name": "software_collections_list"
+        },
+        {
+            "command": "/usr/bin/subscription-manager repos --list-enabled",
+            "pattern": [],
+            "symbolic_name": "subscription_manager_repos_list_enabled"
+        },
+        {
             "command": "/usr/sbin/ss -tulpn",
             "pattern": [],
             "symbolic_name": "ss"
@@ -608,6 +680,26 @@
             "symbolic_name": "systemctl_mariadb"
         },
         {
+            "command": "/bin/systemctl show qpidd",
+            "pattern": [],
+            "symbolic_name": "systemctl_qpidd"
+        },
+        {
+            "command": "/bin/systemctl show qdrouterd",
+            "pattern": [],
+            "symbolic_name": "systemctl_qdrouterd"
+        },
+        {
+            "command": "/bin/systemctl show httpd",
+            "pattern": [],
+            "symbolic_name": "systemctl_httpd"
+        },
+        {
+            "command": "/bin/systemctl show smart_proxy_dynflow_core",
+            "pattern": [],
+            "symbolic_name": "systemctl_smartpdc"
+        },
+        {
             "command": "/usr/bin/teamdctl  state dump",
             "pattern": [],
             "pre_command": "iface",
@@ -644,6 +736,11 @@
             "symbolic_name": "vgs_noheadings"
         },
         {
+            "command": "/usr/bin/virsh --readonly list --all",
+            "pattern": [],
+            "symbolic_name": "virsh_list_all"
+        },
+        {
             "command": "/usr/sbin/virt-what",
             "pattern": [],
             "symbolic_name": "virt_what"
@@ -660,6 +757,14 @@
         }
     ],
     "files": [
+        {
+            "file": "/root/.config/openshift/hosts",
+            "pattern": [
+                "[",
+                "openshift_use_crio"
+            ],
+            "symbolic_name": "openshift_hosts"
+        },
         {
             "file": "/etc/redhat-access-insights/machine-id",
             "pattern": [],
@@ -806,6 +911,16 @@
             "symbolic_name": "current_clocksource"
         },
         {
+            "file": "/sys/devices/system/cpu/smt/active",
+            "pattern": [],
+            "symbolic_name": "cpu_smt_active"
+        },
+        {
+            "file": "/sys/devices/system/cpu/smt/control",
+            "pattern": [],
+            "symbolic_name": "cpu_smt_control"
+        },
+        {
             "file": "/sys/devices/system/cpu/vulnerabilities/meltdown",
             "pattern": [],
             "symbolic_name": "cpu_vulns_meltdown"
@@ -819,6 +934,11 @@
             "file": "/sys/devices/system/cpu/vulnerabilities/spectre_v2",
             "pattern": [],
             "symbolic_name": "cpu_vulns_spectre_v2"
+        },
+        {
+            "file": "/sys/devices/system/cpu/vulnerabilities/spec_store_bypass",
+            "pattern": [],
+            "symbolic_name": "cpu_vulns_spec_store_bypass"
         },
         {
             "file": "/sys/kernel/debug/x86/retp_enabled",
@@ -935,6 +1055,26 @@
             "symbolic_name": "httpd_conf_d"
         },
         {
+            "file": "/opt/rh/httpd24/root/etc/httpd/conf/httpd.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_httpd24"
+        },
+        {
+            "file": "/opt/rh/httpd24/root/etc/httpd/conf.d/()*.+\\.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_httpd24"
+        },
+        {
+            "file": "/opt/rh/jbcs-httpd24/root/etc/httpd/conf/httpd.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
+        },
+        {
+            "file": "/opt/rh/jbcs-httpd24/root/etc/httpd/conf.d/()*.+\\.conf",
+            "pattern": [],
+            "symbolic_name": "httpd_conf_scl_jbcs_httpd24"
+        },
+        {
             "file": "/var/log/httpd/error_log",
             "pattern": [
                 "(28)No space left on device: ",
@@ -949,6 +1089,10 @@
                 "exceeds ServerLimit value of",
                 "exceeds compile time limit of",
                 "exceeds compile-time limit of",
+                "exit signal Segmentation fault",
+                "manager_handler CONFIG error: MEM: Can't update or insert node",
+                "manager_handler ENABLE-APP error: MEM: Can't update or insert context",
+                "manager_handler ENABLE-APP error: MEM: Can't update or insert host alias",
                 "not allowed, increasing to 1"
             ],
             "symbolic_name": "httpd_error_log"
@@ -984,6 +1128,11 @@
                 "<policymap>"
             ],
             "symbolic_name": "imagemagick_policy"
+        },
+        {
+            "file": "/etc/vmware-tools/tools.conf",
+            "pattern": [],
+            "symbolic_name": "vmware_tools_conf"
         },
         {
             "file": "/proc/interrupts",
@@ -1050,9 +1199,11 @@
         {
             "file": "/var/log/mariadb/mariadb.log",
             "pattern": [
+                "Duplicate entry",
                 "OpenSSL internal error, assertion failed: Digest MD5 forbidden in FIPS mode!",
                 "Too many open files",
-                "[ERROR]"
+                "[ERROR]",
+                "for key 'PRIMARY'"
             ],
             "symbolic_name": "mariadb_log"
         },
@@ -1081,27 +1232,34 @@
                 "Error running DeviceResume dm_task_run failed",
                 "List /apis/image.openshift.io/v1/images",
                 "Machine",
+                "Medium access timeout failure. Offlining disk!",
                 "Neighbour table overflow",
                 "Out of MCCQ wrbs",
                 "Out of memory: kill process",
                 "SCSI device reset on",
                 "SDN initialization failed: Error: Existing service with IP: None is not part of service network",
-                "SELinux is preventing /usr/sbin/logrotate from getattr access on the file",
                 "Sense Key : Illegal Request [current]",
                 "Temperature above threshold",
+                "This system does not support \"SSSE3\"",
                 "Uhhuh. NMI received for unknown reason",
+                "Virtualization daemon",
                 "WRITE SAME failed. Manually zeroing",
                 "blocked FC remote port time out",
                 "does not seem to be present, delaying initialization",
+                "error Error on attach: Node not found",
                 "ext4_ext_search_left",
+                "failed: Connection amqps:",
                 "fiid_obj_get: 'present_countdown_value': data not available",
+                "firewalld - dynamic firewall daemon",
                 "fit failure summary on nodes : Insufficient pods",
                 "heated above trip temperature",
+                "http2: no cached connection was available",
                 "in libnl.so.1",
                 "irq handler for vector (irq -1)",
                 "is beyond advertised capabilities",
                 "kernel: CIFS VFS: Unexpected SMB signature",
                 "kernel: bnx2fc: byte_count",
+                "kernel: kvm: disabled by bios",
                 "kernel: lockd: Unknown symbol register_inet6addr_notifier",
                 "kernel: lockd: Unknown symbol unregister_inet6addr_notifier",
                 "kernel: megasas: Found FW in FAULT state,will reset adapter.",
@@ -1109,12 +1267,14 @@
                 "megaraid_sas: FW detected to be in faultstate, restarting it",
                 "mode:0x20",
                 "multipathd.service operation timed out. Terminating",
+                "nectar.downloaders.threaded:ERROR: Skipping requests to",
                 "nf_conntrack: expectation table full",
                 "nf_conntrack: table full, dropping packet",
                 "page allocation failure",
                 "per_source_limit from",
                 "segfault at",
                 "server kernel: rhsmcertd-worke",
+                "shm_open failed, Permission denied",
                 "skb_copy",
                 "skb_over_panic",
                 "start request repeated too quickly for docker.service",
@@ -1123,7 +1283,9 @@
                 "timeout; kill it",
                 "udev: renamed network interface",
                 "udevd",
-                "vmsvc"
+                "unknown filesystem type 'binfmt_misc'",
+                "vdsm-tool: EnvironmentError: Failed to restore the persisted networks",
+                "which already exists for this journal"
             ],
             "symbolic_name": "messages"
         },
@@ -1140,6 +1302,7 @@
         {
             "file": "/etc/()*mongod.conf",
             "pattern": [
+                "dbpath",
                 "destination",
                 "syslog",
                 "systemLog"
@@ -1215,7 +1378,6 @@
         {
             "file": "/var/log/nova/nova-api.log",
             "pattern": [
-                "Duplicate iptables rule detected",
                 "Timed out waiting for a reply to message ID"
             ],
             "symbolic_name": "nova_api_log"
@@ -1223,7 +1385,6 @@
         {
             "file": "/var/log/containers/nova/nova-api.log",
             "pattern": [
-                "Duplicate iptables rule detected",
                 "Timed out waiting for a reply to message ID"
             ],
             "symbolic_name": "nova_api_log"
@@ -1276,6 +1437,27 @@
             "symbolic_name": "ntp_conf"
         },
         {
+            "file": "/etc/odbc.ini",
+            "pattern": [
+                "DRIVER",
+                "Driver",
+                "NO_SSPS",
+                "No_ssps",
+                "SERVER",
+                "Server",
+                "[",
+                "driver",
+                "no_ssps",
+                "server"
+            ],
+            "symbolic_name": "odbc_ini"
+        },
+        {
+            "file": "/etc/odbcinst.ini",
+            "pattern": [],
+            "symbolic_name": "odbcinst_ini"
+        },
+        {
             "file": "/etc/origin/master/master-config.yaml",
             "pattern": [],
             "symbolic_name": "ose_master_config"
@@ -1314,6 +1496,8 @@
                 "FATAL",
                 "checkpoints are occurring too frequently",
                 "connection limit exceeded for non-superusers",
+                "database is not accepting commands to avoid wraparound data loss in database",
+                "must be vacuumed within",
                 "remaining connection slots are reserved for non-replication superuser connections"
             ],
             "symbolic_name": "postgresql_log"
@@ -1337,6 +1521,11 @@
             "file": "/etc/libvirt/qemu.conf",
             "pattern": [],
             "symbolic_name": "qemu_conf"
+        },
+        {
+            "file": "/etc/libvirt/qemu/()*.+\\.xml",
+            "pattern": [],
+            "symbolic_name": "qemu_xml"
         },
         {
             "file": "/var/log/rabbitmq/startup_log",
@@ -1402,8 +1591,19 @@
             "symbolic_name": "rhsm_conf"
         },
         {
+            "file": "/etc/qpid/qpidd.conf",
+            "pattern": [],
+            "symbolic_name": "qpidd_conf"
+        },
+        {
+            "file": "/etc/rhsm/facts/virt_uuid.facts",
+            "pattern": [],
+            "symbolic_name": "virt_uuid_facts"
+        },
+        {
             "file": "/var/log/rhsm/rhsm.log",
             "pattern": [
+                "KeyError: 'config.network.dnsConfig.hostName'",
                 "Temporary failure in name resolution",
                 "Validation failed: Name is invalid",
                 "virt.host_type=hyperv, virt.uuid=Not Settable"
@@ -1652,10 +1852,22 @@
             "symbolic_name": "usr_journald_conf_d"
         },
         {
+            "file": "/etc/vdsm/vdsm.conf",
+            "pattern": [],
+            "symbolic_name": "vdsm_conf"
+        },
+        {
             "file": "/var/log/vdsm/vdsm.log",
             "pattern": [
                 "16514': No route to host",
-                "The name org.fedoraproject.FirewallD1 was not provided by any .service files"
+                "Changed state to Down: internal error: Attempted double use of PCI slot",
+                "Stopping connection",
+                "The name org.fedoraproject.FirewallD1 was not provided by any .service files",
+                "The vm start process failed",
+                "_report_inconsistency",
+                "lastCheck",
+                "libvirtError: internal error: failed to format device alias",
+                "looking for unfetched domain"
             ],
             "symbolic_name": "vdsm_log"
         },
@@ -1663,6 +1875,11 @@
             "file": "/etc/vdsm/vdsm.id",
             "pattern": [],
             "symbolic_name": "vdsm_id"
+        },
+        {
+            "file": "/etc/vdsm/logger.conf",
+            "pattern": [],
+            "symbolic_name": "vdsm_logger_conf"
         },
         {
             "file": "/etc/()*virt-who\\.conf",
@@ -1760,9 +1977,98 @@
             "file": "/var/log/redhat_access_proactive/redhat_access_proactive.log",
             "pattern": [],
             "symbolic_name": "redhat_access_proactive_log"
+        },
+        {
+            "file": "/etc/logrotate.conf",
+            "pattern": [],
+            "symbolic_name": "logrotate_conf"
+        },
+        {
+            "file": "/etc/logrotate.d/().*",
+            "pattern": [],
+            "symbolic_name": "logrotate_conf"
+        },
+        {
+            "file": "/var/log/containers/gnocchi/gnocchi-metricd.log",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+            ],
+            "symbolic_name": "gnocchi_metricd_log"
+        },
+        {
+            "file": "/var/log/gnocchi/metricd.log",
+            "pattern": [
+                "ToozError: Cannot extend an unlocked lock"
+            ],
+            "symbolic_name": "gnocchi_metricd_log"
+        },
+        {
+            "file": "/var/lib/config-data/gnocchi/etc/gnocchi/gnocchi.conf",
+            "pattern": [
+                "[",
+                "coordination_url"
+            ],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
+            "file": "/etc/gnocchi/gnocchi.conf",
+            "pattern": [
+                "[",
+                "coordination_url"
+            ],
+            "symbolic_name": "gnocchi_conf"
+        },
+        {
+            "file": "/etc/zipl.conf",
+            "pattern": [],
+            "symbolic_name": "zipl_conf"
+        },
+        {
+            "file": "/etc/smart_proxy_dynflow_core/settings.yml",
+            "pattern": [
+                ":database:"
+            ],
+            "symbolic_name": "smartpdc_settings"
+        },
+        {
+            "file": "/var/log/neutron/l3-agent.log",
+            "pattern": [
+                "Duplicate iptables rule detected"
+            ],
+            "symbolic_name": "neutron_l3_agent_log"
+        },
+        {
+            "file": "/var/log/neutron/metadata-agent.log",
+            "pattern": [
+                "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
+            ],
+            "symbolic_name": "neutron_metadata_agent_log"
+        },
+        {
+            "file": "/var/log/containers/neutron/metadata-agent.log",
+            "pattern": [
+                "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
+            ],
+            "symbolic_name": "neutron_metadata_agent_log"
         }
     ],
-    "globs": [],
+    "globs": [
+        {
+            "glob": "sys/devices/system/cpu/cpu[0-9]*/online",
+            "symbolic_name": "cpu_cores",
+            "pattern": []
+        },
+        {
+            "glob": "sys/devices/system/cpu/cpu[0-9]*/topology/thread_siblings_list",
+            "symbolic_name": "cpu_siblings",
+            "pattern": []
+        },
+        {
+            "glob": "sys/devices/system/cpu/vulnerabilities/*",
+            "symbolic_name": "cpu_vulns",
+            "pattern": []
+        }
+    ],
     "meta_specs": {
         "analysis_target": {
             "archive_file_name": "/insights_data/analysis_target"
@@ -7273,5 +7579,5 @@
             ]
         }
     },
-    "version": "2018-05-09T17:34:25.780032"
+    "version": "2018-07-19T16:02:43.088286"
 }
