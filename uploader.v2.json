@@ -573,6 +573,11 @@
             "symbolic_name": "ss"
         },
         {
+            "command": "/usr/sbin/ss -tulpna",
+            "pattern": [],
+            "symbolic_name": "ss_tulpna"
+        },
+        {
             "command": "/bin/ls -l /etc/ssh/sshd_config",
             "pattern": [],
             "symbolic_name": "sshd_config_perms"
