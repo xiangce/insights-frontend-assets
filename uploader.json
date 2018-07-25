@@ -6314,8 +6314,8 @@
                     "pattern": []
                 },
                 {
-                    "archive_file_name": "/insights_commands/ss_-tulpna",
-                    "command": "/usr/sbin/ss -tulpna",
+                    "archive_file_name": "/insights_commands/ss_-tupna",
+                    "command": "/usr/sbin/ss -tupna",
                     "pattern": []
                 }
             ]
