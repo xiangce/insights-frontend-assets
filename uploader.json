@@ -4324,6 +4324,29 @@
                 }
             ]
         },
+        "machine-id0": {
+            "docker_container": [
+                {
+                    "archive_file_name": "/insights_data/container/rootfs/etc/insights-client/machine-id",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/insights-client/machine-id",
+                    "pattern": []
+                }
+            ],
+            "docker_image": [
+                {
+                    "archive_file_name": "/insights_data/image/rootfs/etc/insights-client/machine-id",
+                    "file": "{CONTAINER_MOUNT_POINT}/etc/insights-client/machine-id",
+                    "pattern": []
+                }
+            ],
+            "host": [
+                {
+                    "archive_file_name": "/etc/insights-client/machine-id",
+                    "file": "/etc/insights-client/machine-id",
+                    "pattern": []
+                }
+            ]
+        },
         "machine-id1": {
             "docker_container": [
                 {
