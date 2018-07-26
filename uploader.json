@@ -6312,11 +6312,6 @@
                     "archive_file_name": "/insights_commands/ss_-tulpn",
                     "command": "/usr/sbin/ss -tulpn",
                     "pattern": []
-                },
-                {
-                    "archive_file_name": "/insights_commands/ss_-tupna",
-                    "command": "/usr/sbin/ss -tupna",
-                    "pattern": []
                 }
             ]
         },
