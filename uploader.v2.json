@@ -361,6 +361,14 @@
             "symbolic_name": "ls_var_lib_mongodb"
         },
         {
+            "command": "/bin/ls -ln /usr/sbin",
+            "pattern": [
+	        "total",
+		"postdrop"
+	    ],
+            "symbolic_name": "ls_usr_sbin"
+        },
+        {
             "command": "/bin/ls -la /var/log /var/log/audit",
             "pattern": [],
             "symbolic_name": "ls_var_log"
@@ -374,6 +382,11 @@
             "command": "/bin/ls -lnL /var/run",
             "pattern": [],
             "symbolic_name": "ls_var_run"
+        },
+        {
+            "command": "/bin/ls -ln /var/spool/clientmqueue",
+            "pattern": [],
+            "symbolic_name": "ls_var_spool_clientmq"
         },
         {
             "command": "/bin/ls -lan /",
@@ -439,6 +452,16 @@
                 "SapVersionInfo"
             ],
             "symbolic_name": "saphostctl_getcimobject_sapinstance"
+        },
+        {
+            "command": "/usr/sap/hostctrl/exe/saphostexec -status",
+            "pattern": [],
+            "symbolic_name": "saphostexec_status"
+        },
+        {
+            "command": "/usr/sap/hostctrl/exe/saphostexec -version",
+            "pattern": [],
+            "symbolic_name": "saphostexec_version"
         },
         {
             "command": "/usr/bin/lsscsi",
@@ -2064,6 +2087,16 @@
             "symbolic_name": "neutron_l3_agent_log"
         },
         {
+            "file": "/etc/neutron/metadata_agent.ini",
+            "pattern": [],
+            "symbolic_name": "neutron_metadata_agent_ini"
+        },
+        {
+            "file": "/var/lib/config-data/neutron/etc/neutron/metadata_agent.ini",
+            "pattern": [],
+            "symbolic_name": "neutron_metadata_agent_ini"
+        },
+        {
             "file": "/var/log/neutron/metadata-agent.log",
             "pattern": [
                 "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
@@ -2076,6 +2109,11 @@
                 "Unauthorized: {\"error\": {\"message\": \"The resource could not be found.\", \"code\": 404, \"title\": \"Not Found\"}}"
             ],
             "symbolic_name": "neutron_metadata_agent_log"
+        },
+        {
+            "file": "/usr/sap/hostctrl/exe/host_profile",
+            "pattern": [],
+            "symbolic_name": "sap_host_profile"
         }
     ],
     "globs": [
