@@ -422,6 +422,11 @@
             "symbolic_name": "lspci"
         },
         {
+            "command": "/sbin/lspci",
+            "pattern": [],
+            "symbolic_name": "lspci"
+        },
+        {
             "command": "/usr/sap/hostctrl/exe/lssap",
             "pattern": [],
             "symbolic_name": "lssap"
