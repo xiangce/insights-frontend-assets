@@ -645,6 +645,11 @@
             "symbolic_name": "ss"
         },
         {
+            "command": "/usr/sbin/ss -tulpn",
+            "pattern": [],
+            "symbolic_name": "ss"
+        },
+        {
             "command": "/bin/ls -l /etc/ssh/sshd_config",
             "pattern": [],
             "symbolic_name": "sshd_config_perms"
